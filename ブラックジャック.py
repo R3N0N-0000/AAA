@@ -2,10 +2,12 @@ while :
 
     # カードを配る
 
-    while STANDを選ぶまで:
+    while True:
         input("HIT or STAND")
         
         if # HITならカードを1枚配る
+        else:
+            break
 
     # CPU
 
