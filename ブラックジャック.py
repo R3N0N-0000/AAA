@@ -3,17 +3,17 @@ while :
     # カードを配る
 
     while STANDを選ぶまで:
-        # HITかSTANDを選ばせる
+        input("HIT or STAND")
         
-        # HITならカードを1枚配る
+        if # HITならカードを1枚配る
 
     # CPU
 
     if player == cpu or (player > 21 and cpu > 21):
-        # EVEN
+        print("EVEN")
     elif player == 21 and cpu != 21:
-        # BlackJack
+        print("BlackJack")
     elif player > cpu and player <= 21 and cpu <= 21 :
-        # WIN
+        print("WIN")
     else:
-        # LOSE
+        print("LOSE")
