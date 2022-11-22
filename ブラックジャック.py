@@ -1,3 +1,5 @@
+player = []
+cards = []
 while :
 
     # カードを配る
