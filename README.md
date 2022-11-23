@@ -21,4 +21,3 @@ for 変数 in range(数):
     コード
 
 
-x
