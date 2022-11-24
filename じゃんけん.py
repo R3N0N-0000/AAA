@@ -2,7 +2,7 @@ import random
 
 
 cpu = random.randint(1,3)
-while :
+while:
     player = int(input("1:グー、2:チョキ、3:パー"))
 
     if player == cpu:
