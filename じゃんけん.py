@@ -8,8 +8,6 @@ while True:
     if player in ("1","2","3"):
         break
 
-
-
 print("You :",player)
 print("CPU :",cpu)
 
