@@ -1,9 +1,14 @@
+import random
+
+
+
 player = []
-cards = []
+cards = [[1,1,1,1][2,2,2,2][...]]
 
 while :
 
     # カードを配る
+    player.append(cards[random.randint(0,12)])
 
     while True:
         input("HIT or STAND")
