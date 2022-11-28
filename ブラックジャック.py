@@ -3,13 +3,17 @@ import random
 
 
 player = []
-cards = [[1,1,1,1][2,2,2,2][...]]
+cards = [1,2,3,4,5,6,7,8,9,10,11,12,13]
 
-while :
+
+
+#while :
 
     # カードを配る
+for _ in range(2):
     player.append(cards[random.randint(0,12)])
-
+print()
+'''
     while True:
         input("HIT or STAND")
         
@@ -27,3 +31,4 @@ while :
         print("WIN")
     else:
         print("LOSE")
+'''
