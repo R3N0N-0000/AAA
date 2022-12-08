@@ -1,22 +1,22 @@
 import random
 
-cpu = str(random.randint(1,3))
+cpu = random.randint(0,2)
 
 
 while True:
-    player = input("1:グー　2:チョキ　3:パー")
+    player = input("1:グー　2:チョキ　3:パー\n")
     if player in ("1","2","3"):
+        player = int(player)-1
         break
 
 hand = ["グー","チョキ","パー"]
 
-print("You :",hand[int(player)-1])
-print("CPU :", hand[int(cpu)-1])
-
+print("You :", hand[player])
+print("CPU :", hand[cpu])
 
 if player == cpu:
     print("EVEN")
-elif (player == "1" and cpu == "2") or (player == "2" and cpu == "3") or (player == "3" and cpu == "1"):
+elif hand[player - 2] == hand[cpu]:
     print("WIN")
 else:
     print("LOSE")
