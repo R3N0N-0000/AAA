@@ -1,23 +1,53 @@
 class Waribashi:
-    right_1, left_1, right_2, left_2 = 1, 1, 1, 1
-    turn = 1
+    player_1, player_2 = [1, 1], [1, 1]
+    turn = -1
+
     def show(self):
         if self.turn == 1:
-            print(f"{self.right_2} {self.left_2}\n\n{self.left_1} {self.right_1}")
+            print(f"{self.player_2[1]} {self.player_2[0]}\n\n{self.player_1[0]} {self.player_1[1]}")
         else:
-            print(f"{self.right_1} {self.left_1}\n\n{self.left_2} {self.right_2}")
+            print(f"{self.player_1[0]} {self.player_1[1]}\n\n{self.player_2[1]} {self.player_2[0]}")
 
     def input_(self):
-        x = input("right or left")
-        if x in ("right"):
+        while True:
+            me = input("My R or L\n")
+            if me in ("R", "r"):
+                me = 1
+                break
+            elif me in ("L", "l"):
+                me = 0
+                break
+                
+        while True:
+            enemy = input("Enemy R or L\n")
+            if enemy in ("R", "r"):
+                enemy = 1
+                break
+            elif enemy in ("L", "l"):
+                enemy = 0
+                break
 
-        elif x in ("left"):
-            
+        return me, enemy
+
+    def attack(self, me, enemy):
+        # plyer_2[enemy] += player_1[me]
+        if self.turn == 1:
+            self.player_2[enemy] += self.player_1[me]
         else:
-            print("rigth か left で入力してください")
-    def attack(self):
-        
+            self.player_1[enemy] += self.player_2[me]
+
+    def trial(self):
+        if self.player_1 == [5, 5]:
+            return 2
+        elif self.player_2 == [5, 5]:
+            return 1
+
 
 waribashi = Waribashi()
-
-waribashi.show()
+while not waribashi.trial():
+    waribashi.turn *= -1
+    waribashi.show()
+    me, enemy = waribashi.input_()
+    waribashi.attack(me, enemy)
+    
+print(f"Player{waribashi.trial()} Win!")
