@@ -4,12 +4,17 @@ class Waribashi:
     turn = 1
 
     def show(self):
-        for 
-        for i in range(2):
-            print(self.hands[self.turn][i], end = " ")
+        for j in (-1, 1):
+            for i in range(2):
+                print(self.hands[self.turn*j][i], end = " ")
+            print()
 
     def input_(self):
-        ...
+        while True:
+            n = input(f"My {self.hands[self.turn][0]} or {self.hands[self.turn][1]}\n")
+            if n in str(self.hands[self.turn]):
+                break
+            
 
     def attack(self, me, enemy):
         ...
@@ -20,3 +25,4 @@ class Waribashi:
 
 waribashi = Waribashi()
 waribashi.show()
+waribashi.input_()
