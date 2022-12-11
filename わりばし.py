@@ -30,19 +30,18 @@ class Waribashi:
         return me, enemy
 
     def attack(self, me, enemy):
-        # plyer_2[enemy] += player_1[me]
         if self.turn == 1:
             self.player_2[enemy] += self.player_1[me]
+            if self.player_2[enemy] >= 5:
+                self.player_2[enemy] -= 5 # -= 5
+                if 0 in self.player_2:
+                    self.player_2.remove(0)
         else:
             self.player_1[enemy] += self.player_2[me]
-        if self.player_1[0] >= 5:
-            self.player_1[0] += -5
-        elif self.player_1[1] >= 5:
-            self.player_1[1] += -5
-        elif self.player_2[0] >= 5:
-            self.player_2[0] += -5
-        elif self.player_2[1] >= 5:
-            self.player_2[1] += -5
+            if self.player_1[enemy] >= 5:
+                self.player_1[enemy] -= 5
+                if 0 in self.player_1:
+                    self.player_1.remove(0)
 
     def trial(self):
         if self.player_1 == [5, 5]:
