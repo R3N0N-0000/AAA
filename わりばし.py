@@ -15,7 +15,7 @@ class Waribashi:
             if n in str(self.hands[self.turn]):
                 break
         while True:
-            enemy = input(f"enemy {self.hands[self.turn*-1][0]} or {self.hands[self.turn*-1][1]}\n")
+            enemy = input(f"Enemy {self.hands[self.turn*-1][0]} or {self.hands[self.turn*-1][1]}\n")
             if enemy in str(self.hands[self.turn*-1]):
                 break
 
