@@ -20,7 +20,7 @@ class Waribashi:
                 break
 
     def attack(self, me, enemy):
-        
+        ...
 
     def trial(self):
         ...
@@ -29,4 +29,3 @@ class Waribashi:
 waribashi = Waribashi()
 waribashi.show()
 waribashi.input_()
-waribashi.attack()
