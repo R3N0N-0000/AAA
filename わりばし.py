@@ -11,16 +11,22 @@ class Waribashi:
 
     def input_(self):
         while True:
-            n = input(f"My {self.hands[self.turn][0]} or {self.hands[self.turn][1]}\n")
-            if n in str(self.hands[self.turn]):
+            my_num = input(f"My : {self.hands[self.turn][0]} or {self.hands[self.turn][1]}\n")
+            if my_num in str(self.hands[self.turn]):
                 break
         while True:
-            enemy = input(f"Enemy {self.hands[self.turn*-1][0]} or {self.hands[self.turn*-1][1]}\n")
-            if enemy in str(self.hands[self.turn*-1]):
+            enemy_num = input(f"Enemy : {self.hands[self.turn*-1][0]} or {self.hands[self.turn*-1][1]}\n")
+            if enemy_num in str(self.hands[self.turn*-1]):
                 break
+        for i in range(2):
+            if self.hands[self.turn*-1][i] == int(enemy_num):
+                enemy_hand = i
+                return int(my_num), enemy_hand
 
-    def attack(self, me, enemy):
-        ...
+    def attack(self, my_num, enemy_hand):
+        self.hands[self.turn*-1][enemy_hand] += my_num
+        if  self.hands[self.turn*-1][enemy_hand] >= 5:
+            self.hands[self.turn*-1][enemy_hand] -= 5
 
     def trial(self):
         ...
@@ -28,4 +34,5 @@ class Waribashi:
 
 waribashi = Waribashi()
 waribashi.show()
-waribashi.input_()
+my_num, enemy_hand = waribashi.input_()
+waribashi.attack(my_num, enemy_hand)
