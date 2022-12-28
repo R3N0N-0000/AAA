@@ -17,6 +17,6 @@ while num > 0:
         break
     print("\nサイコロの目は", str(dice), "です")
     if num > 0:
-        print("ゴールまであと", str(num),"\n")
+        print("ゴールまであと", str(num), "\n")
     else:
         print("GOAL")
