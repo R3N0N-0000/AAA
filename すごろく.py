@@ -50,11 +50,6 @@ def main():
     sugoroku = Sugoroku()
     sugoroku.input_size()
     sugoroku.input_players()
-    sugoroku.display()
-    sugoroku.positions["R"] = 2
-    sugoroku.display()
-    sugoroku.positions["K"] = 1
-    sugoroku.display()
 
 if __name__ == "__main__":
     main()
