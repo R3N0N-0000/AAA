@@ -8,8 +8,7 @@ class Sugoroku:
 
     def input_size(self):
         while True:
-            size = input("Sugoroku size: ")
-            size = size.strip()
+            size = input("Sugoroku size: ").strip()
             result = re.match(r"^[0-9]+$", size)
             if result:
                 self.size = int(size)
