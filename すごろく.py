@@ -25,30 +25,45 @@ class Sugoroku:
             if not player:
                 break
             self.players.append(player)
-            self.positions[player[0].upper()] = 0
+            self.positions[player] = 0
             # TODO
             # 頭文字が同じ名前は入れないようにする
         print(self.players)
         print(self.positions)
 
-    def play(self):
-        ...
-
     def display(self):
+        sep = "- " * self.size
+        print(sep)
         for player in self.players:
-            p = player[0].upper()
-            position = self.positions[p]
-            space = " " * position
-            print(f"{space}{p}")
-        print("-" * self.size)
+            position = self.positions[player]
+            space = " " * position * 2
+            c = player[0].upper()
+            print(f"{space}{c}")
+        print(sep)
 
-
-
+    def play(self):
+        while True:
+            for player in self.players:
+                input(player + " ")
+                steps = random.randint(1, 6)
+                input(f"{steps} steps ")
+                pos = self.positions[player]
+                next_pos = pos + steps
+                next_pos = min(next_pos, self.size)
+                input(f"{pos} -> {next_pos} ")
+                self.positions[player] = next_pos
+                self.display()
+                if next_pos == self.size:
+                    print("GOAL!")
+                    print(f"{player} WIN!")
+                    return
 
 def main():
     sugoroku = Sugoroku()
     sugoroku.input_size()
     sugoroku.input_players()
+    sugoroku.display()
+    sugoroku.play()
 
 if __name__ == "__main__":
     main()
