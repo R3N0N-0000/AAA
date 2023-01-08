@@ -3,6 +3,7 @@ import re
 
 class Sugoroku:
     players = []
+    goal_players = []
     positions = dict()
     size = 0
 
@@ -32,18 +33,18 @@ class Sugoroku:
         print(self.positions)
 
     def display(self):
-        sep = "- " * self.size
+        sep = "-" * self.size
         print(sep)
         for player in self.players:
             position = self.positions[player]
-            space = " " * position * 2
+            space = " " * position
             c = player[0].upper()
             print(f"{space}{c}")
         print(sep)
 
     def play(self):
         while True:
-            for player in self.players:
+            for n, player in enumerate(self.players):
                 input(player + " ")
                 steps = random.randint(1, 6)
                 input(f"{steps} steps ")
@@ -54,9 +55,11 @@ class Sugoroku:
                 self.positions[player] = next_pos
                 self.display()
                 if next_pos == self.size:
-                    print("GOAL!")
-                    print(f"{player} WIN!")
+                    self.goal_players.append(self.players.pop(n))
+                    print(f"{player} GOAL\n")
+                if len(self.players) == 1:
                     return
+                    
 
 def main():
     sugoroku = Sugoroku()
