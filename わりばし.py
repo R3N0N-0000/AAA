@@ -50,7 +50,7 @@ class Waribashi:
             enemy_num = input(f"Enemy : {self.hands[self.turn*-1][0]} or {self.hands[self.turn*-1][1]}\n")
             if enemy_num in str(self.hands[self.turn*-1]):
                 break
-                return int(my_num), enemy_hand
+        return int(my_num), enemy_hand
 
     def attack(self, my_num, enemy_hand):
         self.hands[self.turn*-1][enemy_hand] += my_num
@@ -73,4 +73,5 @@ while waribashi.trial():
     waribashi.turn *= -1
     waribashi.show()
     my_num, enemy_hand = waribashi.input_()
+    waribashi.input_()
     waribashi.attack(my_num, enemy_hand)
