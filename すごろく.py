@@ -40,41 +40,27 @@ class Sugoroku:
         print(sep)
 
     def play(self):
-        if len(self.players) == 1:
-            while True:
-                for n, player in enumerate(self.players):
-                    input(player + " ")
-                    steps = random.randint(1, 6)
-                    input(f"{steps} steps ")
-                    pos = self.positions[player]
-                    next_pos = pos + steps
-                    next_pos = min(next_pos, self.size)
-                    input(f"{pos} -> {next_pos} ")
-                    self.positions[player] = next_pos
-                    self.display()
-                    if next_pos == self.size:
-                        self.goal_players.append(self.players.pop(n))
+        while True:
+            for n, player in enumerate(self.players):
+                input(player + " ")
+                steps = random.randint(1, 6)
+                input(f"{steps} steps ")
+                pos = self.positions[player]
+                next_pos = pos + steps
+                next_pos = min(next_pos, self.size)
+                input(f"{pos} -> {next_pos} ")
+                self.positions[player] = next_pos
+                self.display()
+                if next_pos == self.size:
+                    self.goal_players.append(self.players.pop(n))
+                    if len(self.players) == 0 and len(self.goal_players) == 1:
                         print("GOAL")
                         return
-        
-        else:
-            while True:
-                for n, player in enumerate(self.players):
-                    input(player + " ")
-                    steps = random.randint(1, 6)
-                    input(f"{steps} steps ")
-                    pos = self.positions[player]
-                    next_pos = pos + steps
-                    next_pos = min(next_pos, self.size)
-                    input(f"{pos} -> {next_pos} ")
-                    self.positions[player] = next_pos
-                    self.display()
-                    if next_pos == self.size:
-                        self.goal_players.append(self.players.pop(n))
+                    else:
                         print(f"{player} GOAL\n")
                     if len(self.players) == 1:
                         return
-                    
+    
 
 def main():
     sugoroku = Sugoroku()
