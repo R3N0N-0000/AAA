@@ -21,14 +21,11 @@ class Sugoroku:
 
     def input_players(self):
         while True:
-            player = input("player's name: ")
-            player = player.strip()
+            player = input("player's name: ").strip()
             if not player:
                 break
             self.players.append(player)
             self.positions[player] = 0
-            # TODO
-            # 頭文字が同じ名前は入れないようにする
         print(self.players)
         print(self.positions)
 
@@ -43,22 +40,40 @@ class Sugoroku:
         print(sep)
 
     def play(self):
-        while True:
-            for n, player in enumerate(self.players):
-                input(player + " ")
-                steps = random.randint(1, 6)
-                input(f"{steps} steps ")
-                pos = self.positions[player]
-                next_pos = pos + steps
-                next_pos = min(next_pos, self.size)
-                input(f"{pos} -> {next_pos} ")
-                self.positions[player] = next_pos
-                self.display()
-                if next_pos == self.size:
-                    self.goal_players.append(self.players.pop(n))
-                    print(f"{player} GOAL\n")
-                if len(self.players) == 1:
-                    return
+        if len(self.players) == 1:
+            while True:
+                for n, player in enumerate(self.players):
+                    input(player + " ")
+                    steps = random.randint(1, 6)
+                    input(f"{steps} steps ")
+                    pos = self.positions[player]
+                    next_pos = pos + steps
+                    next_pos = min(next_pos, self.size)
+                    input(f"{pos} -> {next_pos} ")
+                    self.positions[player] = next_pos
+                    self.display()
+                    if next_pos == self.size:
+                        self.goal_players.append(self.players.pop(n))
+                        print("GOAL")
+                        return
+        
+        else:
+            while True:
+                for n, player in enumerate(self.players):
+                    input(player + " ")
+                    steps = random.randint(1, 6)
+                    input(f"{steps} steps ")
+                    pos = self.positions[player]
+                    next_pos = pos + steps
+                    next_pos = min(next_pos, self.size)
+                    input(f"{pos} -> {next_pos} ")
+                    self.positions[player] = next_pos
+                    self.display()
+                    if next_pos == self.size:
+                        self.goal_players.append(self.players.pop(n))
+                        print(f"{player} GOAL\n")
+                    if len(self.players) == 1:
+                        return
                     
 
 def main():
